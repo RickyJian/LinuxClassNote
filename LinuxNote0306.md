@@ -1,12 +1,13 @@
 #  Note 0306
 ## 實作步驟
 1. su -
-> 權限切換
+    > 權限切換
+
 2. init-class `31` 
-> 網路設定 <br >
-> 10.0.0.X
->> X = no * 5 + 1 ～ 5
->>> no = computerNO <br>
+    > 網路設定 <br >
+    > 10.0.0.X
+    >> X = no * 5 + 1 ～ 5
+    >>> no = computerNO <br>
 3. reboot
 
 ## others 
@@ -30,6 +31,6 @@
 * `:set nu` ： 行號
 * NG : 移到檔案第N行
 * 1,$s /`replaceTo`/`replace`/g 
-> 替換1個 <br>
-> replaceTo ： 被替換<br>
-> replace ： 替換<br>
+    > 替換1個 <br>
+    > replaceTo ： 被替換<br>
+    > replace ： 替換<br>
