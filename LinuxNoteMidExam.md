@@ -1,4 +1,4 @@
-# 期中考
+# 期中考筆記
 ## 考題
 
 * DNS網路設定 ([LinuxNote0410](https://github.com/RickyJian/LinuxClassNote/blob/master/LinuxNote0410.md))
