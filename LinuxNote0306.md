@@ -6,8 +6,11 @@
 2. init-class `31` 
     > 網路設定 <br >
     > 10.0.0.X
+    >
     >> X = no * 5 + 1 ～ 5
+    >>
     >>> no = computerNO <br>
+    
 3. reboot
 
 ## others 
