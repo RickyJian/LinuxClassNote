@@ -56,6 +56,7 @@
 ### passwd 檔案
 
 * `User Name:Password:UID:GID:Remark:Home Directory:Shell`
+
     > User Name ： owner 的帳號 <br>
     > Password ： 原來密碼放置處，現放在 shadow 裡 <br>
     > UID ： 這個就是使用者識別碼 <br>
