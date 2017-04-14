@@ -4,7 +4,7 @@
 1. ssh root@10.1.1.157
 2. blkid /dev/db1
 3. mount /dev/vdb1 /mnt
-    > 將 /dev/vdb1 掛載到 /mnt
+    > 將 /dev/vdb1 掛載到 /mnt <br>
     > umount /mnt 刪除掛載
 
 4. df -h
@@ -14,7 +14,7 @@
     > 新增1～100個使用者，名字為 `user1` 、 `user2` ...
 
 6. echo `user1` | passwd --stdin `user1`
-    > 找 user1 並輸入 user1 這個密碼
+    > 找 user1 並輸入 user1 這個密碼 <br>
     > stdin ： 標準輸入
 
 7. vi `create_user`.sh
@@ -28,8 +28,8 @@
         done
     ```
 
-    >  useradd autouser${u} ： 新增使用者 autouser1 ...
-    > echo user${u} ： 密碼
+    >  useradd autouser${u} ： 新增使用者 autouser1 ... <br>
+    > echo user${u} ： 密碼 <br>
     > passwd --stdin autouser${u} ： 更改的帳戶，例如：找出 autouser1 並將密碼更改為 user1
 
 8. chmod +x
