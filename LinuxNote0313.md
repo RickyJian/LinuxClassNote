@@ -51,7 +51,7 @@
 14. chpasswd < /tmp/test.txt
     > chpasswd ： 大量修改密碼
 
-chpasswd 指令來大量修改密碼
+
 ----
 ### passwd 檔案
 
