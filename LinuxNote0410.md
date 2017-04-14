@@ -50,6 +50,7 @@
     ```
     /dev/vdb1 /var/www/html ext4 defaults 0 0
     ```
+    > fstab：開機自動掛載
 
 21. mount -a
     > 檢查掛載是否有誤
