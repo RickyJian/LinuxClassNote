@@ -51,7 +51,7 @@
     > 看磁碟詳細資料
 
 16. fdisk -l /dev/vdb <br>
-    n → p → l → `按ENTER` → +400M
+    n → p → l → `按ENTER` → +400M → w
 
 17. ls /dev/vdb*
 18. blkid /dev/vdb1
