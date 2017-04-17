@@ -20,9 +20,11 @@
 ### Step 1  網路連線
 1. init-class `No` // 號碼
     > ip = no * 5  +1 ～ +5 
-    >
-    >> no = 31<br>
-    >> ip = 31*5 +1 ～ +5 = 156 ～ 160
+
+    EX：
+
+    > no = 31<br>
+    > ip = 31*5 +1 ～ +5 = 156 ～ 160
 
 2. reboot
 
@@ -111,7 +113,7 @@
     .
     .
     .
-    autouser5...
+    autouser5:centos 
     ```
 8. chpasswd < /tmp/test.txt
     > chpasswd ： 大量修改密碼
