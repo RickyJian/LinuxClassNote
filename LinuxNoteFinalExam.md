@@ -18,8 +18,13 @@ passwordauthentication no #不能用帳密登入
 
 
 
-yum  install bind-chroot
-yum  install bind-utils
+yum  install -y bind-chroot
+yum  install -y bind-utils
+
+firewall-cmd --permanent --add-port=53/udp
+firewall-cmd --permanent --add-port=53/tcp
+firewall-cmd --reload
+
 
 cd /etc/
 
@@ -46,40 +51,32 @@ rndc reload
 
 # 檢查 DNS 成功與否
 
+
 host ns.site01.exam.class.ntub 127.0.0.1
 
 
 
 ```
 
+
+####  修改 /etc/named.conf
+
+![namedconf](/images/named.conf.PNG "namedconf" )
+
+#### 修改 /var/named/named.empty
+
+![namedempty](/images/named.empty.PNG "namedempty" )
+
+
 ### Client 端
 
 ```vi
 
- 
+yum  install -y bind-utils
 
 host -t ns site01.exam.class.ntub
 
-
-
 ```
-
-```
-
-# 修改 /var/named/named.empty
-
-
-```
-
-
-```
-
-# 修改 /etc/named.conf
-
-
-```
-
-
 
 ## samba
 
@@ -93,7 +90,7 @@ systemctl eable smb
 
 mkdir /share
 
-group staff
+groupadd staff
 useradd -g staff emp01
 useradd -g staff emp02
 
@@ -114,28 +111,32 @@ ss -ntulp |grep 445
 
 # share 權限設定
 chmod u=rwx, g = rwx , o =--- /share/
+# or
+chmod 770 /share/
 
 chgrp staff /share/
 
 ```
 
-```
+####  修改 /etc/named.conf
 
-# smb.conf.example
+![namedconf](/images/named.conf.smb.PNG "namedconf" )
 
+#### 檢查 samba.conf.example 
 
+![smbce](/images/samba.PNG "smbce" )
 
-```
+#### 修改 samba.conf
 
-```
-# smb.conf
-```
+![smbco](/images/samba.conf.PNG "smbco" )
+改成
+![smbco](/images/samba.conf2.PNG "smbco" )
 
 ### client
 
 ```vi
 
-yum install cifs-utils
+yum install -y cifs-utils
 
 mount -t cifs -o rw,username=emp01,password=password //128.119.223.152/share /mnt
 
@@ -154,7 +155,7 @@ touch a
 ```vi
 
 cd /var/named
-vi dns
+vi named.conf
 rndc reload
 
 cd /etc/postfix
@@ -180,24 +181,32 @@ vi devecot.conf
 
 ```
 
-```
+#### 修改 named.empty
 
-# main.cf
+![namedempty](/images/named.empty2.PNG "namedempty" )
 
 
-```
+#### 修改 main.cf
+
+![maincf](/images/main.cf.PNG "maincf" )
+![maincf](/images/main.cf2.PNG "maincf" )
+![maincf](/images/main.cf3.PNG "maincf" )
 
 ### client
 
 ```
 
-host -t mx mailroot
+host -t mx site01.exam.class.ntub
 yum provides *bin/mail
 
-yum install mailx -y
+yum install -y mailx 
 
 
-exho test mail | mail -s emp01@site01.exam.cass.ntub
+exho test mail | mail -s emp01@site01.exam.class.ntub
+
+#or 
+
+mail -s "test" emp01@site01.exam.class.ntub
 
 sendmail -q
 ```
@@ -216,11 +225,14 @@ less /var/log/message
 ## 從message中找出這行
 '/usr/bin/mysqladmin' -u root password 'new-password'
 
+# 設定完登入
 
+mysql -u root -h localhost -p
 
 yum install mod_ssl php php-mysql php-pdo php-mbstring
 
 cd /var/www/html
+
 
 curl -O -L  https://files.phpmyadmin.net/phpMyAdmin/4.0.10.20/phpMyAdmin-4.0.10.20-all-languages.tar.gz
 
@@ -241,3 +253,4 @@ mysql -u root -p -h localhost tablename < tablename.sql
 
 ```
 
+![mysql](/images/mysqlLink.PNG "mysql" )
